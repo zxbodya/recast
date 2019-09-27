@@ -1,4 +1,5 @@
 import * as ESTree from "estree";
+import {ParseOptions, Program} from "esprima";
 
 /**
  * "esprima" module augmentations.

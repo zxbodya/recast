@@ -1,7 +1,7 @@
 {
   "author": "Ben Newman <bn@cs.stanford.edu>",
-  "name": "recast",
-  "version": "0.20.4",
+  "name": "@zxbodya/recast",
+  "version": "0.20.8",
   "description": "JavaScript syntax tree transformer, nondestructive pretty-printer, and automatic source map generator",
   "keywords": [
     "ast",

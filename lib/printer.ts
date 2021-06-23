@@ -1,6 +1,6 @@
 import assert from "assert";
 import { printComments } from "./comments";
-import { Lines, fromString, concat } from "./lines";
+import { Lines, fromString, concat, fromTemplateString } from "./lines";
 import { normalize as normalizeOptions } from "./options";
 import { getReprinter } from "./patcher";
 import * as types from "ast-types";
@@ -1489,7 +1489,7 @@ function genericPrintNoParens(path: any, options: any, print: any) {
       return concat(parts);
 
     case "TemplateElement":
-      return fromString(n.value.raw, options).lockIndentTail();
+      return fromTemplateString(n.value.raw, options);
 
     case "TemplateLiteral": {
       const expressions = path.map(print, "expressions");

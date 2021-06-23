@@ -240,4 +240,22 @@ describe("import/export syntax", function () {
       code,
     );
   });
+
+  it("should preserve whitespace characters in template strings", ()=>{
+    const code = [
+      "var s1 = `  hello`;",
+      "var s2 = `  \thello`;",
+      "var s3 = `  \tline1",
+      "    line2`;",
+    ].join(eol);
+
+    const ast = parse(code);
+
+    assert.strictEqual(
+      new Printer({
+        tabWidth: 2,
+      }).printGenerically(ast).code,
+      code,
+    );
+  })
 });

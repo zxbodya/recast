@@ -793,6 +793,28 @@ export function fromString(string: string | Lines, options?: Options): Lines {
   return lines;
 }
 
+/**
+ * Special helper for template strings to correctly preserve whitespace
+ * @param {Object} options - Options object that configures printing.
+ */
+export function fromTemplateString(string: string, options?: Options): Lines {
+  const lines = new Lines(
+    string.split(lineTerminatorSeqExp).map(function (line, index) {
+      return {
+        line: line,
+        indent: 0,
+        // Boolean indicating whether this line can be reindented.
+        locked: index !== 0,
+        sliceStart: 0,
+        sliceEnd: line.length,
+      };
+    }),
+    normalizeOptions(options).sourceFileName,
+  );
+
+  return lines;
+}
+
 function isOnlyWhitespace(string: string) {
   return !/\S/.test(string);
 }

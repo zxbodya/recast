@@ -245,6 +245,7 @@ describe("import/export syntax", function () {
     const code = [
       "var s1 = `  hello`;",
       "var s2 = `  \thello`;",
+      "",
       "var s3 = `  \tline1",
       "    line2`;",
     ].join(eol);

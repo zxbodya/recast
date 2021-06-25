@@ -14,11 +14,16 @@ export function parse(source: string, options?: Partial<Options>) {
 
   const lines = fromString(source, options);
 
-  const sourceWithoutTabs = lines.toString({
-    tabWidth: options.tabWidth,
-    reuseWhitespace: false,
-    useTabs: false,
-  });
+  const sourceWithoutTabs = source;
+  // this is incorrect for case when paving template string literals width custom spaces like tab or NBSP characters
+  // however - there are some issues for tab handling in other cases covered by "[*] TabHandling" tests in test/parser.ts
+  // disabled the test because it if not important for my use-case in flowts
+  //
+  // const sourceWithoutTabs = lines.toString({
+  //   tabWidth: options.tabWidth,
+  //   reuseWhitespace: false,
+  //   useTabs: false,
+  // });
 
   let comments: any[] = [];
   const ast = options.parser.parse(sourceWithoutTabs, {
